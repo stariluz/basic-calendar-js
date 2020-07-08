@@ -4,9 +4,6 @@ body {
   display: flex;
   justify-content: center;
 }
-.contenedor-general {
-  width: 630px;
-}
 .cuestionario {
   width: fit-content;
   margin: 0 auto;
@@ -62,28 +59,40 @@ button.boton:active{
   margin-bottom: 3px;
 }
 .nombres-container {
+  width: fit-content;
+  margin: 0;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(7,min-content);
   grid-auto-rows: 1fr;
-  gap: 2px;
+  gap: 5px;
   margin-bottom: 5px;
 }
 .nombre {
-  height: 40px;
+  width: 100px;
+  height: 60px;
   background-color: #a1d3ff;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #2c90ee;
+  box-sizing: border-box;
+  border: 3px solid #2c90ee;
   border-radius: 3px;
 }
+.contenedor-cuadricula {
+  display: flex;
+  justify-content: center;
+}
 .cantidad-dias {
+  margin: 0;
+  width: fit-content;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(7,min-content);
   grid-auto-rows: 1fr;
   gap: 5px;
 }
 .fecha {
+  width: 100px;
+  height: 60px;
   background-color: #ffffff;
   border: 1px solid #808080;
   border-radius: 5px;
@@ -93,4 +102,17 @@ button.boton:active{
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
+}
+@media screen and (max-width: 745px) {
+  .cuestionario {
+    flex-wrap: wrap;
+  }
+  .nombre {
+    width: 40px;
+    height: 40px;
+  }
+  .fecha {
+    width: 40px;
+    height: 40px;
+  }
 }

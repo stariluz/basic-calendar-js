@@ -20,6 +20,30 @@ var nombresdeDias=document.getElementById("nombres-container");
 var nuevaCasilla
 var cuadricula=document.getElementById("cantidad-dias")
 
+function filaNombres(){
+  var mediaCss=window.matchMedia("(max-width: 450px)");
+  nombresdeDias.innerHTML=""
+  ///console.log(mediaCss);
+  if(mediaCss.matches){
+    ///console.log("media <450px");
+    for (var i=0; i<7; i++){
+      agregarNombre=document.createElement("div")
+      agregarNombre.className="nombre"
+      agregarNombre.innerHTML=nameD[i][0]
+      nombresdeDias.appendChild(agregarNombre)
+    }
+  }else{
+    for (var i=0; i<7; i++){
+      agregarNombre=document.createElement("div")
+      agregarNombre.className="nombre"
+      agregarNombre.innerText=(nameD[i][0]+nameD[i][1]+nameD[i][2])
+      nombresdeDias.appendChild(agregarNombre)
+    }
+  }
+}
+function borrar(entrada) {
+  entrada.value=""
+}
 function errores() {
   if(isNaN(d)){
     mensajeError.innerText="";
@@ -76,26 +100,29 @@ function buscar() {
   var dia=d+codM[m]+digA+(~~(digA/4))+codS[sig%4]
   dia%=7
 
-  dateTitle.innerText=(nameD[dia]+" "+d+" DE "+nameM[m]+" DEL "+a)
-  nombresdeDias.innerHTML=""
-  for (var i=0; i<7; i++){
-    agregarNombre=document.createElement("div")
-    agregarNombre.className="nombre"
-    agregarNombre.innerText=(nameD[i][0]+nameD[i][1]+nameD[i][2])
-    nombresdeDias.appendChild(agregarNombre)
+  if(a%4==0&&m<=2){
+    s--
+    dia--
+    if(s===-1)s=6
+    if(dia===-1)dia=6
   }
+  ///console.log(s,dia);
+
+  dateTitle.innerText=(nameD[dia]+" "+d+" DE "+nameM[m]+" DEL "+a)
+  
+  filaNombres();
+
   var val=1-s
   cuadricula.innerHTML=""
   while(val<=diasxM[m]){
-    ///console.log(val)
     for (var i=0; i<7; i++){
       nuevaCasilla=document.createElement("div")
       nuevaCasilla.className="fecha"
       if(val<1){
         if(m===1){
-          nuevaCasilla.innerText=diasxM[12]-val
+          nuevaCasilla.innerText=diasxM[12]+val
         }else{
-          nuevaCasilla.innerText=diasxM[m-1]-val
+          nuevaCasilla.innerText=diasxM[m-1]+val
         }
         nuevaCasilla.style.backgroundColor="#dddddd"
       }else if(val>diasxM[m]){

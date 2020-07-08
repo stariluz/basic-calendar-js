@@ -11,46 +11,19 @@
   <div class="contenedor-general">
     <div class="cuestionario">
       <a>Dia: </a>
-      <input type="text" name="" id="dia" value="1">
+      <input type="text" name="" id="dia" value="1" onclick='borrar(document.getElementById("dia"))'>
       <a>Mes: </a>
-      <input type="text" name="" id="mes" value="1">
+      <input type="text" name="" id="mes" value="1" onclick='borrar(document.getElementById("mes"))'>
       <a>Año: </a>
-      <input type="text" name="" id="año" value="1">
+      <input type="text" name="" id="año" value="1" onclick='borrar(document.getElementById("año"))'>
       <button class="boton" onclick="buscar()">Buscar</button>
     </div>
     <div class="mensaje-error" id="mensaje-error"></div>
-    <div class="calendario-container" id="calendario-container">
-      <div class="date-title" id="date-title"></div>
-      <div class="nombres-container" id="nombres-container"></div>
-      <div class="cantidad-dias" id="cantidad-dias">
-        <div class="fecha">a1</div>
-        <div class="fecha">a</div>
-        <div class="fecha">b</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">b</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">b</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">b</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
-        <div class="fecha">a</div>
+    <div class="contenedor-cuadricula">
+      <div class="calendario-container" id="calendario-container">
+        <div class="date-title" id="date-title"></div>
+        <div class="nombres-container" id="nombres-container"></div>
+        <div class="cantidad-dias" id="cantidad-dias"></div>
       </div>
     </div>
   </div>
