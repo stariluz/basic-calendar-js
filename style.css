@@ -83,22 +83,21 @@ button.boton:active{
   justify-content: center;
 }
 .cantidad-dias {
-  margin: 0;
   width: fit-content;
   display: grid;
   grid-template-columns: repeat(7,min-content);
   grid-auto-rows: 1fr;
   gap: 5px;
+  margin: 0;
 }
 .fecha {
   width: 100px;
-  height: 60px;
+  height: 90px;
   background-color: #ffffff;
   border: 1px solid #808080;
   border-radius: 5px;
   padding: 2px;
   box-sizing: border-box;
-  height: 60px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-start;
@@ -106,6 +105,9 @@ button.boton:active{
 @media screen and (max-width: 745px) {
   .cuestionario {
     flex-wrap: wrap;
+  }
+  .date-title {
+    width: 300px;
   }
   .nombre {
     width: 40px;

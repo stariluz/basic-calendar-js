@@ -19,12 +19,52 @@ var agregarNombre
 var nombresdeDias=document.getElementById("nombres-container");
 var nuevaCasilla
 var cuadricula=document.getElementById("cantidad-dias")
+var digA,sig,val,s,dia
+/*
+function pulsarDia(){
+  valorDia=innerHTML
+  dia=d+codM[m]+digA+(~~(digA/4))+codS[sig%4]
+  dia%=7
 
+  if(a%4==0&&m<=2){
+    s--
+    dia--
+    if(s===-1)s=6
+    if(dia===-1)dia=6
+  }
+  val=1-s
+  cuadricula.innerHTML=""
+  while(val<=diasxM[m]){
+    for (var i=0; i<7; i++){
+      nuevaCasilla=document.createElement("div")
+      nuevaCasilla.className="fecha"
+      if(val<1){
+        if(m===1){
+          nuevaCasilla.innerText=diasxM[12]+val
+        }else{
+          nuevaCasilla.innerText=diasxM[m-1]+val
+        }
+        nuevaCasilla.style.backgroundColor="#dddddd"
+      }else if(val>diasxM[m]){
+        nuevaCasilla.innerText=val-diasxM[m]
+        nuevaCasilla.style.backgroundColor="#dddddd"
+      }else{
+        nuevaCasilla.innerText=val
+      }
+      if(val===d){
+        nuevaCasilla.style.backgroundColor="#d0fbbf"
+      }
+      cuadricula.appendChild(nuevaCasilla)
+      val++
+    }
+  }
+}
+*/
 function filaNombres(){
   var mediaCss=window.matchMedia("(max-width: 450px)");
   nombresdeDias.innerHTML=""
   ///console.log(mediaCss);
-  if(mediaCss.matches){
+  if(mediaCss.matchess){
     ///console.log("media <450px");
     for (var i=0; i<7; i++){
       agregarNombre=document.createElement("div")
@@ -82,6 +122,7 @@ function errores() {
     return true;
   }
 }
+
 function buscar() {
   mensajeError.style.display="none";
   d=parseInt(document.getElementById("dia").value)
@@ -93,11 +134,11 @@ function buscar() {
   ///console.log(d,m,a);
   calendario.style.display="inline"
 
-  var digA=a%100
-  var sig=~~(a/100)
-  var s=1+codM[m]+digA+(~~(digA/4))+codS[sig%4]
+  digA=a%100
+  sig=~~(a/100)
+  s=1+codM[m]+digA+(~~(digA/4))+codS[sig%4]
   s%=7
-  var dia=d+codM[m]+digA+(~~(digA/4))+codS[sig%4]
+  dia=d+codM[m]+digA+(~~(digA/4))+codS[sig%4]
   dia%=7
 
   if(a%4==0&&m<=2){
@@ -106,13 +147,12 @@ function buscar() {
     if(s===-1)s=6
     if(dia===-1)dia=6
   }
-  ///console.log(s,dia);
 
   dateTitle.innerText=(nameD[dia]+" "+d+" DE "+nameM[m]+" DEL "+a)
   
   filaNombres();
 
-  var val=1-s
+  val=1-s
   cuadricula.innerHTML=""
   while(val<=diasxM[m]){
     for (var i=0; i<7; i++){
@@ -138,5 +178,4 @@ function buscar() {
       val++
     }
   }
-  
 }
