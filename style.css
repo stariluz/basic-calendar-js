@@ -102,6 +102,12 @@ button.boton:active{
   justify-content: flex-end;
   align-items: flex-start;
 }
+.fecha:hover {
+  border: 2px solid #808080;
+}
+.fecha:active {
+  border: 2px solid #1f7234;
+}
 @media screen and (max-width: 745px) {
   .cuestionario {
     flex-wrap: wrap;

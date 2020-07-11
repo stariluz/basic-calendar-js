@@ -17,55 +17,32 @@ var mensajeError=document.getElementById("mensaje-error");
 var dateTitle=document.getElementById("date-title");
 var agregarNombre
 var nombresdeDias=document.getElementById("nombres-container");
-var nuevaCasilla
+var nuevaCasilla,casillaSeleccionada
 var cuadricula=document.getElementById("cantidad-dias")
 var digA,sig,val,s,dia
-/*
-function pulsarDia(){
-  valorDia=innerHTML
-  dia=d+codM[m]+digA+(~~(digA/4))+codS[sig%4]
-  dia%=7
 
+function pulsarDia(casilla){
+  var enteroSeleccionado=parseInt(casillaSeleccionada.id.substring(3))
+  ///console.log(enteroSeleccionado);
+  casillaSeleccionada.style=""
+  casillaSeleccionada=casilla
+  casillaSeleccionada.style.backgroundColor="#d0fbbf"
+  document.getElementById("dia").value=casillaSeleccionada.id.substring(3)
+  var enteroSeleccionado=parseInt(casillaSeleccionada.id.substring(3))
+  
+  dia=enteroSeleccionado+codM[m]+digA+(~~(digA/4))+codS[sig%4]
+  dia%=7
   if(a%4==0&&m<=2){
-    s--
     dia--
-    if(s===-1)s=6
     if(dia===-1)dia=6
   }
-  val=1-s
-  cuadricula.innerHTML=""
-  while(val<=diasxM[m]){
-    for (var i=0; i<7; i++){
-      nuevaCasilla=document.createElement("div")
-      nuevaCasilla.className="fecha"
-      if(val<1){
-        if(m===1){
-          nuevaCasilla.innerText=diasxM[12]+val
-        }else{
-          nuevaCasilla.innerText=diasxM[m-1]+val
-        }
-        nuevaCasilla.style.backgroundColor="#dddddd"
-      }else if(val>diasxM[m]){
-        nuevaCasilla.innerText=val-diasxM[m]
-        nuevaCasilla.style.backgroundColor="#dddddd"
-      }else{
-        nuevaCasilla.innerText=val
-      }
-      if(val===d){
-        nuevaCasilla.style.backgroundColor="#d0fbbf"
-      }
-      cuadricula.appendChild(nuevaCasilla)
-      val++
-    }
-  }
+  dateTitle.innerText=(nameD[dia]+" "+enteroSeleccionado+" DE "+nameM[m]+" DEL "+a)
 }
-*/
+
 function filaNombres(){
-  var mediaCss=window.matchMedia("(max-width: 450px)");
+  var mediaCss=window.matchMedia("(max-width: 745px)");
   nombresdeDias.innerHTML=""
-  ///console.log(mediaCss);
-  if(mediaCss.matchess){
-    ///console.log("media <450px");
+  if(mediaCss.matches){
     for (var i=0; i<7; i++){
       agregarNombre=document.createElement("div")
       agregarNombre.className="nombre"
@@ -150,7 +127,7 @@ function buscar() {
 
   dateTitle.innerText=(nameD[dia]+" "+d+" DE "+nameM[m]+" DEL "+a)
   
-  filaNombres();
+  filaNombres()
 
   val=1-s
   cuadricula.innerHTML=""
@@ -158,6 +135,8 @@ function buscar() {
     for (var i=0; i<7; i++){
       nuevaCasilla=document.createElement("div")
       nuevaCasilla.className="fecha"
+      nuevaCasilla.id="num"+val
+      ///console.log(nuevaCasilla.onclick);
       if(val<1){
         if(m===1){
           nuevaCasilla.innerText=diasxM[12]+val
@@ -170,10 +149,14 @@ function buscar() {
         nuevaCasilla.style.backgroundColor="#dddddd"
       }else{
         nuevaCasilla.innerText=val
+        nuevaCasilla.setAttribute("onclick", "pulsarDia("+nuevaCasilla.id+")")
       }
       if(val===d){
         nuevaCasilla.style.backgroundColor="#d0fbbf"
+        casillaSeleccionada=nuevaCasilla
       }
+      ///nuevaCasilla.onclick="pulsarDia(document.getElementById("+nuevaCasilla.id+"))"
+      ///console.log(nuevaCasilla);
       cuadricula.appendChild(nuevaCasilla)
       val++
     }
