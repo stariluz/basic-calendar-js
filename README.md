@@ -1,2 +1,3 @@
 # calendario
-Cree este sitio para seguir practicando mi conocimiento en Javascript. Su función es mostrar el calendario mensual de cualquier fecha ingresada.
+This is a practice of javascript and logic behavior over dates.
+The functionality is to show the month of any input date.
